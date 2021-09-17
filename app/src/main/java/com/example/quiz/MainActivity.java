@@ -12,21 +12,18 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private Button registrarButton;
-    private String estudiante, puntosString, estudiantes;
+    private String estudiante, puntosString, estudiantes, newStudent;
     private TextView estudianteText;
+    private int est;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        estudiantes = " estudiantes \n";
         registrarButton = findViewById(R.id.registrarButton);
         estudianteText = findViewById(R.id.estudianteText);
 
-
-
-        //Go to the register
         registrarButton.setOnClickListener(
                 (View view) -> {
                     Intent registro = new Intent(this, RegistroActivity.class);
@@ -44,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
         estudiante = sp.getString("estudiante", "");
         puntosString = sp.getString("puntos", "");
 
-        estudiantes += estudiante + "    " +  puntosString  + "\n";
+        String[] names = estudiante.split(":");
+        String[] points = puntosString.split(":");
 
-        estudianteText.setText(estudiantes);
+        for (int i = 0; i < names.length ; i++) {
+            est = i;
+            estudianteText.append(names[est] + "     " +points[est] + "\n");
 
-
+        }
     }
-
 }

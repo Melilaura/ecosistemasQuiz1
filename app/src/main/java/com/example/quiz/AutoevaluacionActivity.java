@@ -21,9 +21,9 @@ public class AutoevaluacionActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autoevaluacion);
 
-        ejercicios =(CheckBox) findViewById(R.id.ejerciciosCheck);
-        temas = (CheckBox) findViewById(R.id.temasCheck);
-        ninguno = (CheckBox) findViewById(R.id.ningunoCheck2);
+        ejercicios =findViewById(R.id.ejerciciosCheck);
+        temas = findViewById(R.id.temasCheck);
+        ninguno = findViewById(R.id.ningunoCheck2);
 
         continuarButton3= findViewById(R.id.continuarButton4);
         continuarButton3.setEnabled(false);
@@ -32,8 +32,8 @@ public class AutoevaluacionActivity  extends AppCompatActivity {
         checkBoxes();
         continuarButton3.setOnClickListener(
                 (View view) ->{
-                    String puntaje = " puntaje: "+ puntos ;
-                    Toast.makeText(getApplicationContext(), puntaje, Toast.LENGTH_SHORT).show();
+                    //String puntaje = " puntaje: "+ puntos ;
+                   //Toast.makeText(getApplicationContext(), puntaje, Toast.LENGTH_SHORT).show();
 
                     SharedPreferences sp = getSharedPreferences("student_info", MODE_PRIVATE);
                     sp.edit().putString("puntos", ""+ puntos).apply();
@@ -44,7 +44,6 @@ public class AutoevaluacionActivity  extends AppCompatActivity {
     }
 
     public void checkBoxes(){
-
 
         puntos = getIntent().getExtras().getInt("puntos");
 
@@ -59,6 +58,7 @@ public class AutoevaluacionActivity  extends AppCompatActivity {
                     }
                 }
         );
+
         temas .setOnCheckedChangeListener(
                 (c, b) -> {
                     if (temas .isChecked()){
@@ -67,20 +67,24 @@ public class AutoevaluacionActivity  extends AppCompatActivity {
                     } else {
                         puntos-= 3;
                         continuarButton3.setEnabled(false);
+
                     }
                 }
         );
+
         ninguno.setOnCheckedChangeListener(
                 (c, b) -> {
                     if (ninguno.isChecked()){
                         puntos+= 0;
                         continuarButton3.setEnabled(true);
+
                     } else {
                         puntos+= 0;
                         continuarButton3.setEnabled(false);
                     }
                 }
         );
+
 
 
 

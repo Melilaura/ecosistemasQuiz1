@@ -22,19 +22,18 @@ public class PreguntasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
 
-        videos = (CheckBox)findViewById(R.id.videosCheck);
-        ejemplos = (CheckBox)findViewById(R.id.ejemplosCheck);
-        ninguno =(CheckBox) findViewById(R.id.ningunoCheck);
+        videos = findViewById(R.id.videosCheck);
+        ejemplos = findViewById(R.id.ejemplosCheck);
+        ninguno = findViewById(R.id.ningunoCheck);
 
-        continuarButton2=(Button) findViewById(R.id.continuarButton2);
+        continuarButton2=findViewById(R.id.continuarButton2);
         continuarButton2.setEnabled(false);
 
         checkBoxes();
         continuarButton2.setOnClickListener(
                 (View view) -> {
-                    String message = " puntaje: " + puntos;
-                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
+                    //String message = " puntaje: " + puntos;
+                    //Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                      Intent autoevaluacion = new Intent(this, AutoevaluacionActivity.class);
                      autoevaluacion.putExtra("puntos", puntos);
                      startActivity(autoevaluacion);

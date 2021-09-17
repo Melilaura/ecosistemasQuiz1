@@ -24,29 +24,32 @@ public class RegistroActivity  extends AppCompatActivity {
 
         estudianteText = findViewById(R.id.nombreText);
         codigoText = findViewById(R.id.codigoText);
+
         nuevoE=true;
+
         continuarButton = findViewById(R.id.continuarButton);
+
         SharedPreferences sp = getSharedPreferences("student_info", MODE_PRIVATE);
-
-
-
-
 
         continuarButton.setOnClickListener(
                 (View view) ->{
-                    //text spaces
+
                     estudiante= estudianteText.getText().toString();
                     codigo= codigoText.getText().toString();
 
                     if(estudiante.isEmpty() || codigo.isEmpty()){
                         Toast.makeText(this, "Verifique sus datos", Toast.LENGTH_SHORT).show();
-                    }else{
+                    }
+                    else{
                         sp.edit().putString("estudiante", estudiante).apply();
                         sp.edit().putString("codigo", codigo).apply();
+
                         nuevoE=true;
-                    } if (codigo.equals(codigos)){
+                    }
+                    if (codigo.equals(codigos)){
                         Toast.makeText(this, "Código ya registrado", Toast.LENGTH_SHORT).show();
                         nuevoE=false;
+
                     } else if(nuevoE=true) {
                         Intent preguntas = new Intent(this, PreguntasActivity.class);
                         startActivity(preguntas);
